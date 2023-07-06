@@ -206,6 +206,7 @@ Main left
   border-bottom: 1px solid #ddd;
   cursor: pointer;
   transition: background-color 200ms ease-in-out;
+  user-select: none;
 }
 
 #app .main-app-left .contact:hover,

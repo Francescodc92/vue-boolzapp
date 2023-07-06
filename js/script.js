@@ -4,6 +4,7 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
+      newMessage: "",
       contacts: [
         {
           name: 'Michele',
@@ -197,6 +198,30 @@ createApp({
         contact.visible = false
       });
       this.contacts[index].visible = true;
+    },
+    sendMessage(){
+      let currentIDChat = "" 
+      this.contacts.forEach((contact, index) => {
+        if(contact.visible){
+          currentIDChat = index
+          contact.messages.push({
+            date: '10/01/2020 15:30:55',
+            message: this.newMessage,
+            status: 'sent'
+          })
+        }
+      });
+      this.newMessage = ""
+      setTimeout(() => {
+        this.replayMessage(currentIDChat)
+      }, 1000);
+    },
+    replayMessage(currentIndex){
+      this.contacts[currentIndex].messages.push({
+        date: '10/01/2020 15:30:55',
+        message: 'risposta',
+        status: 'received'
+      })
     }
   }
 }).mount('#app');
