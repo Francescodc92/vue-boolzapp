@@ -1,3 +1,7 @@
+/*-------------
+Reset
+-------------*/
+
 * {
   margin: 0;
   padding: 0;
@@ -5,3 +9,203 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/*-------------
+Generals
+-------------*/
+img {
+  max-width: 100%;
+}
+ul {
+  list-style: none;
+}
+.container{
+  background-image:linear-gradient(180deg, rgba(0,150,136,1) 0%,
+                                     rgba(215,219,215,1) 30%) ;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*-------------
+App
+-------------*/
+
+#app{
+  width: 80%;
+  max-width:1200px ;
+  background-color: #fff;
+  height: 80vh;
+}
+
+/*-------------
+App section left contacts list 
+-------------*/
+
+#app .section-left{
+  height: 100%;
+  width: 40%;
+  background-color: #EAEAEA;
+}
+
+/*-------------header section left-------------*/
+
+#app .section-left .header-top{
+  padding: .3125rem .625rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#app .section-left .section-left-header{
+  display: flex;
+  align-items: center;
+  gap: .3125rem;
+}
+
+#app .section-left .img-wrapper{
+  width:3.125rem;
+  height: 3.125rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+#app .section-left .section-left-header .name{
+  text-transform: capitalize;
+}
+
+/*-------------header section right-------------*/
+
+#app .section-left .section-right-header .section-right-header-icons{
+  display: flex;
+  gap: .3125rem;
+  font-size: 1.3rem;
+  color: #B1B1B1;
+  transition: color 200ms ease-in-out;
+}
+
+#app .section-left .section-right-header .section-right-header-icons li a{
+  padding: .625rem;
+  color: #B1B1B1;
+}
+
+#app .section-left .section-right-header .section-right-header-icons li a:hover{
+  color: #fff;
+}
+
+/*-------------
+header middle
+-------------*/
+
+#app .section-left .header-meddle {
+  padding: .625rem;
+  background-color: #8EDAFC;
+  display: flex;
+  gap: .3125rem;
+}
+
+#app .section-left .header-meddle .notifications{
+  font-size: .875rem;
+  width: 2.1875rem;
+  height: 2.1875rem;
+  background-color: #fff;
+  color: #8EDAFC;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#app .section-left .header-meddle .text {
+  font-size: 14px;
+}
+
+#app .section-left .header-meddle .text a{
+  font-size: 13px;
+  color: #aaa;
+  transition: color 200ms ease-in-out;
+}
+
+#app .section-left .header-meddle .text a:hover{
+  color: #fff;
+}
+
+/*-------------
+header bottom
+-------------*/
+#app .section-left .header-bottom {
+  padding: .3125rem;
+}
+
+#app .section-left .header-bottom input{
+  width: 100%;
+  padding: .3125rem 1.5625rem;
+  border-radius: .3125rem;
+  border: none;
+  outline-color: #B1B1B1;
+}
+
+#app .section-left .header-bottom input::placeholder{
+  color: #B1B1B1;
+}
+
+#app .section-left .header-bottom .input-wrapper{
+  position: relative;
+}
+
+#app .section-left .header-bottom .input-wrapper i{
+  position: absolute;
+  top: 50%;
+  left: 2px;
+  transform: translateY(-50%);
+  color: #B1B1B1;
+}
+
+/*-------------
+Main left
+-------------*/
+#app .main-app-left {
+  height: 80%;
+  overflow-y: auto;
+}
+/*-------------contacts elements-------------*/
+
+#app .main-app-left .contact{
+  padding: .625rem .625rem;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 200ms ease-in-out;
+}
+
+#app .main-app-left .contact:hover{
+  background-color: #E9EBEB;
+}
+
+#app .main-app-left .contact-left{
+  display: flex;
+  gap: .3125rem;
+  text-transform: capitalize;
+}
+
+#app .main-app-left .img-wrapper{
+  width:3.125rem;
+  height: 3.125rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+#app .main-app-left .contact-left .name{
+  font-size: 1rem;
+  text-transform: capitalize;
+}
+
+#app .main-app-left .contact-left .last-messagge,
+#app .main-app-left .section-right-main{
+  font-size: 13px;
+  color: #aaa;
+}
+
