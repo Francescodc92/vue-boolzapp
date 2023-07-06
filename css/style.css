@@ -10,6 +10,11 @@ Reset
   -moz-osx-font-smoothing: grayscale;
 }
 
+:root{
+  --header-height:3.875rem;
+  --footer-height:3.125rem;
+}
+
 /*-------------
 Generals
 -------------*/
@@ -28,10 +33,10 @@ ul {
   justify-content: center;
 }
 
-.header-app-right {
-  height: 61px;
-}
 
+.avatar-visibile{
+  display: block;
+}
 
 /*-------------
 App
@@ -111,7 +116,7 @@ App section left contacts list
 
 #app .section-left .section-right-header .section-right-header-icons li a:hover,
 #app .section-right .section-right-header .section-right-header-icons li a:hover{
-  color: #fff;
+  color: #b9c1c9b1;
 }
 
 /*-------------
@@ -135,6 +140,7 @@ header middle
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 
 #app .section-left .header-meddle .text {
@@ -148,7 +154,7 @@ header middle
 }
 
 #app .section-left .header-meddle .text a:hover{
-  color: #fff;
+  color: #b9c1c9b1;
 }
 
 /*-------------
@@ -201,7 +207,8 @@ Main left
   transition: background-color 200ms ease-in-out;
 }
 
-#app .main-app-left .contact:hover{
+#app .main-app-left .contact:hover,
+#app .main-app-left .contact.visible{
   background-color: #E9EBEB;
 }
 
@@ -238,7 +245,7 @@ Section right
 }
 /*---------main section right-----------*/
 .main-right{
-  height: calc(100% - 61px);
+  height: calc(100% - (var(--header-height ) + var(--footer-height)));
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -272,4 +279,43 @@ Section right
   font-size: .625rem;
   color:#aaa;
   align-self: flex-end;
+}
+
+/*-------------
+Main footer
+--------------*/
+#app .main-footer{
+  height: var(--footer-height);
+  background-color: #F3EEEA;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding-inline: 1.25rem;
+}
+
+#app .main-footer .input-wrapper{
+  flex-grow: 1;
+}
+#app .main-footer input{
+  width: 100%;
+  padding: .625rem;
+  border-radius: .3125rem;
+  border: none;
+  outline-color: #B1B1B1;
+}
+
+#app .main-footer input::placeholder{
+  color: #B1B1B1;
+}
+
+#app .main-footer .footer-button{
+  color: #768694B1;
+  border: 0;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+#app .main-footer .footer-button:hover{
+  color: #9faab4b1;
 }
