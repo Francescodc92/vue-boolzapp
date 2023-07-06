@@ -1,3 +1,4 @@
+/* ricordare di modificare la lente di ringrandimento della barra di ricerca dei contatti */
 const { createApp } = Vue;
 
 createApp({
@@ -188,6 +189,14 @@ createApp({
           ],
         }
       ]
+    }
+  },
+  methods:{
+    activeChat(index){
+      this.contacts.forEach(contact => {
+        contact.visible = false
+      });
+      this.contacts[index].visible = true;
     }
   }
 }).mount('#app');

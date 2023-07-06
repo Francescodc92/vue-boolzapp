@@ -166,7 +166,7 @@ header bottom
 
 #app .section-left .header-bottom input{
   width: 100%;
-  padding: .3125rem 1.5625rem;
+  padding: .3125rem 35px;
   border-radius: .3125rem;
   border: none;
   outline-color: #B1B1B1;
@@ -186,6 +186,7 @@ header bottom
   left: .3125rem;
   transform: translateY(-50%);
   color: #B1B1B1;
+  cursor: pointer;
 }
 
 /*-------------

@@ -77,7 +77,11 @@
             <!--end header app section left -->
             <div class="main-app-left">
               <ul>
-                <li class="contact" :class="contact.visible? 'visible' : ''" v-for="contact in contacts">
+                <li class="contact" 
+                  @click="activeChat(index)"
+                  :class="contact.visible ? 'visible' : ''"
+                  v-for="(contact, index) in contacts"
+                >
                   <div class="contact-left">
                     <div class="img-wrapper">
                       <img :src="contact.avatar" alt="" class="avatar-header">
@@ -102,7 +106,7 @@
           <div class="section-right">
             <div class="header-app-right">
               <div class="header-top">
-                  <div v-for="contact in contacts">
+                  <template v-for="contact in contacts">
                     <div class="message-person section-left-header " v-if="contact.visible">
                       <div class="img-wrapper" >
                         <img :src="contact.avatar" alt="" class="avatar-header">
@@ -115,7 +119,7 @@
                         </p>
                       </div>
                     </div>
-                  </div>
+                  </template>
                   <!--end section header left -->
                   <div class="section-right-header">
                     <ul class="section-right-header-icons">
