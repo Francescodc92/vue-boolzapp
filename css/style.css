@@ -28,15 +28,25 @@ ul {
   justify-content: center;
 }
 
+.header-app-right {
+  height: 61px;
+}
+
+
 /*-------------
 App
 -------------*/
 
 #app{
   width: 80%;
-  max-width:1200px ;
-  background-color: #fff;
   height: 80vh;
+  max-width:1200px ;
+}
+
+.container-app{
+  height: 100%;
+  display: flex;
+  background-color: #fff;
 }
 
 /*-------------
@@ -48,36 +58,44 @@ App section left contacts list
   width: 40%;
   background-color: #EAEAEA;
 }
+#app .section-right{
+  width: 60%;
+}
 
 /*-------------header section left-------------*/
 
-#app .section-left .header-top{
+#app .section-left .header-top,
+#app .section-right .header-top{
   padding: .3125rem .625rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-#app .section-left .section-left-header{
+#app .section-left .section-left-header,
+#app .section-right .section-left-header{
   display: flex;
   align-items: center;
   gap: .3125rem;
 }
 
-#app .section-left .img-wrapper{
+#app .section-left .img-wrapper,
+#app .section-right .img-wrapper{
   width:3.125rem;
   height: 3.125rem;
   border-radius: 50%;
   overflow: hidden;
 }
 
-#app .section-left .section-left-header .name{
+#app .section-left .section-left-header .name,
+#app .section-right .section-left-header .name{
   text-transform: capitalize;
 }
 
 /*-------------header section right-------------*/
 
-#app .section-left .section-right-header .section-right-header-icons{
+#app .section-left .section-right-header .section-right-header-icons,
+#app .section-right .section-right-header .section-right-header-icons{
   display: flex;
   gap: .3125rem;
   font-size: 1.3rem;
@@ -85,12 +103,14 @@ App section left contacts list
   transition: color 200ms ease-in-out;
 }
 
-#app .section-left .section-right-header .section-right-header-icons li a{
+#app .section-left .section-right-header .section-right-header-icons li a,
+#app .section-right .section-right-header .section-right-header-icons li a{
   padding: .625rem;
   color: #B1B1B1;
 }
 
-#app .section-left .section-right-header .section-right-header-icons li a:hover{
+#app .section-left .section-right-header .section-right-header-icons li a:hover,
+#app .section-right .section-right-header .section-right-header-icons li a:hover{
   color: #fff;
 }
 
@@ -157,7 +177,7 @@ header bottom
 #app .section-left .header-bottom .input-wrapper i{
   position: absolute;
   top: 50%;
-  left: 2px;
+  left: .3125rem;
   transform: translateY(-50%);
   color: #B1B1B1;
 }
@@ -203,9 +223,53 @@ Main left
   text-transform: capitalize;
 }
 
-#app .main-app-left .contact-left .last-messagge,
+#app .last-messagge,
 #app .main-app-left .section-right-main{
   font-size: 13px;
   color: #aaa;
 }
 
+/*--------
+Section right
+---------*/
+.header-app-right{
+  background-color: #EAEAEA;
+  border: 1px solid #ccc;
+}
+/*---------main section right-----------*/
+.main-right{
+  height: calc(100% - 61px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background-image: url(../img/mine.jpg);
+}
+
+.message {
+  width: 200px;
+  margin:.9375rem .625rem;
+  padding: .3125rem .625rem;
+  border-radius: .625rem;
+  display: flex;
+  justify-content: space-between;
+}
+.sent{
+  align-self: flex-end;
+  background-color: #D5F9BA;
+}
+
+.received{
+  align-self: flex-start;
+  background-color: #fff;
+}
+
+.text-message{
+  align-self: flex-start;
+  padding: .625rem;
+}
+
+.time{
+  font-size: .625rem;
+  color:#aaa;
+  align-self: flex-end;
+}
