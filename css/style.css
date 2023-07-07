@@ -13,7 +13,7 @@ Reset
 :root{
   --header-height:3.875rem;
   --footer-height:3.125rem;
-  --header-bottom-height:2.5rem;
+  --header-bottom-height:3.125rem;
   --header-meddle-height:3.75rem;
 }
 
@@ -171,31 +171,44 @@ header bottom
   align-items: center;
 }
 
-#app .section-left .header-bottom input{
+#app .section-left .header-bottom .input-wrapper{
   width: 100%;
-  padding: .3125rem 35px;
-  border-radius: .3125rem;
-  border: none;
+  height: 70%;
+  padding-inline: .3125rem;
+  display: flex;
+}
+
+#app .section-left .header-bottom .seach-button{
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: .9375rem;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  transition: background-color 200ms ease-in-out;
+  cursor: pointer;
+}
+
+#app .section-left .header-bottom .seach-button:hover{
+  background-color: #ddd;
+}
+
+#app .section-left .header-bottom .input-wrapper i{
+  color: #B1B1B1;
+}
+
+#app .section-left .header-bottom input{
+  flex-grow: 1;
+  height: 100%;
+  padding-inline: .3125rem;
+  border: 1px solid #ddd;
+  border-left: none;
   outline-color: #B1B1B1;
 }
 
 #app .section-left .header-bottom input::placeholder{
   color: #B1B1B1;
-}
-
-#app .section-left .header-bottom .input-wrapper{
-  width: 100%;
-  padding-inline: .625rem;
-  position: relative;
-}
-
-#app .section-left .header-bottom .input-wrapper i{
-  position: absolute;
-  top: 50%;
-  left: .9375rem;
-  transform: translateY(-50%);
-  color: #B1B1B1;
-  cursor: pointer;
 }
 
 /*-------------
@@ -220,7 +233,7 @@ Main left
 }
 
 #app .main-app-left .contact:hover,
-#app .main-app-left .contact.visible{
+#app .main-app-left .contact.active{
   background-color: #E9EBEB;
 }
 
@@ -243,7 +256,8 @@ Main left
 }
 
 #app .last-messagge,
-#app .main-app-left .section-right-main{
+#app .main-app-left .section-right-main,
+#app .main-app-left .contact-right{
   font-size: 13px;
   color: #aaa;
 }
@@ -266,7 +280,7 @@ Section right
 }
 
 .message {
-  width: 200px;
+  max-width:60%;
   margin:.3125rem .625rem;
   padding: .3125rem .625rem;
   border-radius: .625rem;
@@ -285,10 +299,11 @@ Section right
 
 .text-message{
   align-self: flex-start;
-  padding: .625rem;
+  padding:.625rem .1875rem ;
 }
 
 .time{
+  max-width: 60px;
   font-size: .625rem;
   color:#aaa;
   align-self: flex-end;

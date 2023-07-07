@@ -67,8 +67,15 @@
                 <!--end header meddle -->
                 <div class="header-bottom">
                   <div class="input-wrapper">
-                    <input type="text" placeholder="Cerca o inizia una nuova chat">
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <button class="seach-button">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <input 
+                    @keyup="contactFilter()"
+                    v-model="searchInput"
+                    type="text" 
+                    placeholder="Cerca o inizia una nuova chat"
+                    >
                   </div>
                   <!--end input wrapper -->
                 </div>
@@ -77,27 +84,29 @@
               <!--end header app section left -->
               <div class="main-app-left">
                 <ul>
-                  <li class="contact" 
-                    @click="activeChat(index)"
-                    :class="contactActiveIndex == index ? 'visible' : ''"
-                    v-for="(contact, index) in contacts"
-                  >
-                    <div class="contact-left">
-                      <div class="img-wrapper">
-                        <img :src="contact.avatar" alt="" class="avatar-header">
+                  <template v-for="(contact, index) in contacts">
+                    <li class="contact" 
+                      @click="activeChat(index)"
+                      :class="contactActiveIndex == index ? 'active' : ''"
+                      v-if="contact.visible"
+                    >
+                      <div class="contact-left">
+                        <div class="img-wrapper">
+                          <img :src="contact.avatar" alt="" class="avatar-header">
+                        </div>
+                        <!--end img wrapper -->
+                        <div class="info">
+                          <span class="name">{{contact.name}}</span>
+                          <p class="last-messagge">Ultimo messaggio inviato</p>
+                        </div>
                       </div>
-                      <!--end img wrapper -->
-                      <div class="info">
-                        <span class="name">{{contact.name}}</span>
-                        <p class="last-messagge">Ultimo messaggio inviato</p>
+                      <!--end section header left -->
+                      <div class="contact-right">
+                        {{getDate(index)}}
                       </div>
-                    </div>
-                    <!--end section header left -->
-                    <div class="section-right-main">
-                      12.00
-                    </div>
-                    <!--end section header left -->
-                  </li>
+                      <!--end section header left -->
+                    </li>
+                  </template>
                   <!--endcontact element-->       
                 </ul>
               </div>
