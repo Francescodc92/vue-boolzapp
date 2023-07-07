@@ -14,124 +14,32 @@
   <body>
 
 
-    <div class="container">
+    <div id="app">
+      <div class="container">
 
-      <div id="app">
-        <div class="container-app">
-          <div class="section-left">
-            <div class="header-app-left">
-              <div class="header-top">
-                <div class="section-left-header">
-                  <div class="img-wrapper">
-                    <img src="./img/avatar_1.jpg" alt="" class="avatar-header">
-                  </div>
-                  <!--end img wrapper -->
-                  <span class="name">francesco</span>
-                </div>
-                <!--end section header left -->
-                <div class="section-right-header">
-                  <ul class="section-right-header-icons">
-                    <li>
-                      <a href="">
-                        <i class="fa-solid fa-circle-notch"></i>
-                      </a>
-                    </li>
-                    <!--end icon item-->
-                    <li>
-                      <a href="">
-                        <i class="fa-solid fa-message"></i>
-                      </a>
-                    </li>
-                    <!--end icon item-->
-                    <li>
-                      <a href="">
-                        <i class="fa-solid fa-ellipsis-vertical"></i>
-                      </a>
-                    </li>
-                    <!--end icon item-->
-                  </ul>
-                </div>
-                <!--end section header left -->
-              </div>
-              <!--end header top -->
-              <div class="header-meddle">
-                <div class="notifications">
-                  <i class="fa-solid fa-bell-slash"></i>
-                </div>
-                <div class="text">
-                  <p>Ricevi notifiche di nuovi messaggi</p>
-                  <a href="#">Attiva notifiche desktop</a>
-                </div>
-                <!--end notifications -->
-              </div>
-              <!--end header meddle -->
-              <div class="header-bottom">
-                <div class="input-wrapper">
-                  <input type="text" placeholder="Cerca o inizia una nuova chat">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </div>
-                <!--end input wrapper -->
-              </div>
-              <!--end header bottom -->
-            </div>
-            <!--end header app section left -->
-            <div class="main-app-left">
-              <ul>
-                <li class="contact" 
-                  @click="activeChat(index)"
-                  :class="contact.visible ? 'visible' : ''"
-                  v-for="(contact, index) in contacts"
-                >
-                  <div class="contact-left">
+          <div class="container-app">
+            <div class="section-left">
+              <div class="header-app-left">
+                <div class="header-top">
+                  <div class="section-left-header">
                     <div class="img-wrapper">
-                      <img :src="contact.avatar" alt="" class="avatar-header">
+                      <img src="./img/avatar_1.jpg" alt="" class="avatar-header">
                     </div>
                     <!--end img wrapper -->
-                    <div class="info">
-                      <span class="name">{{contact.name}}</span>
-                      <p class="last-messagge">Ultimo messaggio inviato</p>
-                    </div>
+                    <span class="name">francesco</span>
                   </div>
-                  <!--end section header left -->
-                  <div class="section-right-main">
-                    12.00
-                  </div>
-                  <!--end section header left -->
-                </li>
-                <!--endcontact element-->       
-              </ul>
-            </div>
-          </div>
-          <!--end section left -->
-          <div class="section-right">
-            <div class="header-app-right">
-              <div class="header-top">
-                  <template v-for="contact in contacts">
-                    <div class="message-person section-left-header " v-if="contact.visible">
-                      <div class="img-wrapper" >
-                        <img :src="contact.avatar" alt="" class="avatar-header">
-                      </div>
-                      <!--end img wrapper -->
-                      <div class="text-container">    
-                        <span class="name">{{contact.name}}</span>
-                        <p class="last-messagge">
-                          Ultimo accesso oggi alle 12:00
-                        </p>
-                      </div>
-                    </div>
-                  </template>
                   <!--end section header left -->
                   <div class="section-right-header">
                     <ul class="section-right-header-icons">
                       <li>
                         <a href="">
-                         <i class="fa-solid fa-magnifying-glass"></i>
+                          <i class="fa-solid fa-circle-notch"></i>
                         </a>
                       </li>
                       <!--end icon item-->
                       <li>
                         <a href="">
-                          <i class="fa-solid fa-paperclip"></i>
+                          <i class="fa-solid fa-message"></i>
                         </a>
                       </li>
                       <!--end icon item-->
@@ -144,47 +52,133 @@
                     </ul>
                   </div>
                   <!--end section header left -->
+                </div>
+                <!--end header top -->
+                <div class="header-meddle">
+                  <div class="notifications">
+                    <i class="fa-solid fa-bell-slash"></i>
+                  </div>
+                  <div class="text">
+                    <p>Ricevi notifiche di nuovi messaggi</p>
+                    <a href="#">Attiva notifiche desktop</a>
+                  </div>
+                  <!--end notifications -->
+                </div>
+                <!--end header meddle -->
+                <div class="header-bottom">
+                  <div class="input-wrapper">
+                    <input type="text" placeholder="Cerca o inizia una nuova chat">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </div>
+                  <!--end input wrapper -->
+                </div>
+                <!--end header bottom -->
               </div>
-              <!--end header top -->
+              <!--end header app section left -->
+              <div class="main-app-left">
+                <ul>
+                  <li class="contact" 
+                    @click="activeChat(index)"
+                    :class="contactActiveIndex == index ? 'visible' : ''"
+                    v-for="(contact, index) in contacts"
+                  >
+                    <div class="contact-left">
+                      <div class="img-wrapper">
+                        <img :src="contact.avatar" alt="" class="avatar-header">
+                      </div>
+                      <!--end img wrapper -->
+                      <div class="info">
+                        <span class="name">{{contact.name}}</span>
+                        <p class="last-messagge">Ultimo messaggio inviato</p>
+                      </div>
+                    </div>
+                    <!--end section header left -->
+                    <div class="section-right-main">
+                      12.00
+                    </div>
+                    <!--end section header left -->
+                  </li>
+                  <!--endcontact element-->       
+                </ul>
+              </div>
             </div>
-            <!--end header section right-->
-            <template v-for="contact in contacts">
-              <div class="main-right" v-if="contact.visible" >
-                <p class="message" :class="[message.status]" v-for="message in contact.messages">
-                  <span class="text-message">{{message.message}}</span> 
-                  <span class="time">15:00</span>
-                </p>
-                <!-- <p class="message sent"> 
-                  <span class="text-message">ok</span> 
-                  <span class="time">15:00</span>
-                </p> -->
+            <!--end section left -->
+            <div class="section-right">
+              <div class="header-app-right">
+                <div class="header-top">
+                      <div class="message-person section-left-header ">
+                        <div class="img-wrapper" >
+                          <img :src="contacts[contactActiveIndex].avatar" :alt="contacts[contactActiveIndex].name" class="avatar-header">
+                        </div>
+                        <!--end img wrapper -->
+                        <div class="text-container">    
+                          <span class="name">{{contacts[contactActiveIndex].name}}</span>
+                          <p class="last-messagge">
+                            Ultimo accesso oggi alle 12:00
+                          </p>
+                        </div>
+                      </div>
+                    <!--end section header left -->
+                    <div class="section-right-header">
+                      <ul class="section-right-header-icons">
+                        <li>
+                          <a href="">
+                          <i class="fa-solid fa-magnifying-glass"></i>
+                          </a>
+                        </li>
+                        <!--end icon item-->
+                        <li>
+                          <a href="">
+                            <i class="fa-solid fa-paperclip"></i>
+                          </a>
+                        </li>
+                        <!--end icon item-->
+                        <li>
+                          <a href="">
+                            <i class="fa-solid fa-ellipsis-vertical"></i>
+                          </a>
+                        </li>
+                        <!--end icon item-->
+                      </ul>
+                    </div>
+                    <!--end section header left -->
+                </div>
+                <!--end header top -->
               </div>
-              <!--end main right-->
-            </template>
-            <!--end message chat-->
-            <div class="main-footer">
-              <button class="footer-button">
-                <i class="fa-regular fa-face-smile"></i>
-              </button>
-              <div class="input-wrapper">
-                <input 
-                  type="text"
-                  placeholder="Scrivi un messaggio"
-                  v-model="newMessage"
-                  @keyup.enter="sendMessage()"
-                >
+              <!--end header section right-->
+            
+                <div class="main-right" >
+                  <p class="message" :class="[message.status]" v-for="message in contacts[contactActiveIndex].messages">
+                    <span class="text-message">{{message.message}}</span> 
+                    <span class="time">{{message.date}}</span>
+                  </p>
+                </div>
+                <!--end main right-->
+              <!--end message chat-->
+              <div class="main-footer">
+                <button class="footer-button">
+                  <i class="fa-regular fa-face-smile"></i>
+                </button>
+                <div class="input-wrapper">
+                  <input 
+                    type="text"
+                    placeholder="Scrivi un messaggio"
+                    v-model="newMessage"
+                    @keyup.enter="sendMessage()"
+                  >
+                </div>
+                <button class="footer-button">
+                  <i class="fa-solid fa-microphone"></i>
+                </button>
               </div>
-              <button class="footer-button">
-                <i class="fa-solid fa-microphone"></i>
-              </button>
+              <!--end main footer-->
             </div>
-            <!--end main footer-->
           </div>
+          <!--container app-->
         </div>
-        <!--container app-->
-      </div>
-      <!--vue container-->
+        <!--container bg-->
     </div>
+    <!--vue container-->
 
     <!--axios js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

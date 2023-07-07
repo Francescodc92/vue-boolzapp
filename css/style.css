@@ -13,6 +13,8 @@ Reset
 :root{
   --header-height:3.875rem;
   --footer-height:3.125rem;
+  --header-bottom-height:2.5rem;
+  --header-meddle-height:3.75rem;
 }
 
 /*-------------
@@ -24,7 +26,7 @@ img {
 ul {
   list-style: none;
 }
-.container{
+#app{
   background-image:linear-gradient(180deg, rgba(0,150,136,1) 0%,
                                      rgba(215,219,215,1) 30%) ;
   min-height: 100vh;
@@ -42,7 +44,7 @@ ul {
 App
 -------------*/
 
-#app{
+.container{
   width: 80%;
   height: 80vh;
   max-width:1200px ;
@@ -124,9 +126,11 @@ header middle
 -------------*/
 
 #app .section-left .header-meddle {
-  padding: .625rem;
+  height: var(--header-meddle-height);
   background-color: #8EDAFC;
   display: flex;
+  align-items: center;
+  padding-inline: .9375rem;
   gap: .3125rem;
 }
 
@@ -154,14 +158,17 @@ header middle
 }
 
 #app .section-left .header-meddle .text a:hover{
-  color: #b9c1c9b1;
+  color: #fff;
 }
 
 /*-------------
 header bottom
 -------------*/
 #app .section-left .header-bottom {
-  padding: .3125rem;
+  height: var(--header-bottom-height);
+  display: flex;
+  border-bottom: 1px solid #ccc;
+  align-items: center;
 }
 
 #app .section-left .header-bottom input{
@@ -177,13 +184,15 @@ header bottom
 }
 
 #app .section-left .header-bottom .input-wrapper{
+  width: 100%;
+  padding-inline: .625rem;
   position: relative;
 }
 
 #app .section-left .header-bottom .input-wrapper i{
   position: absolute;
   top: 50%;
-  left: .3125rem;
+  left: .9375rem;
   transform: translateY(-50%);
   color: #B1B1B1;
   cursor: pointer;
@@ -193,7 +202,8 @@ header bottom
 Main left
 -------------*/
 #app .main-app-left {
-  height: 80%;
+  width: 100%;
+  height: calc(100% - (var(--header-height) + var(--header-meddle-height) + var(--header-bottom-height)) );
   overflow-y: auto;
 }
 /*-------------contacts elements-------------*/
@@ -252,11 +262,12 @@ Section right
   display: flex;
   flex-direction: column;
   background-image: url(../img/mine.jpg);
+  user-select: none;
 }
 
 .message {
   width: 200px;
-  margin:.9375rem .625rem;
+  margin:.3125rem .625rem;
   padding: .3125rem .625rem;
   border-radius: .625rem;
   display: flex;

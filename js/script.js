@@ -1,10 +1,15 @@
-/* ricordare di modificare la lente di ringrandimento della barra di ricerca dei contatti */
+/*
+-ricordare di modificare la lente di ringrandimento della barra di ricerca dei contatti 
+- aggiungere la funzione per trattare la data 
+- aggiungere la condizione che mostra un elemento alternativo quando nessuno dei contatti è attivo
+*/
 const { createApp } = Vue;
 
 createApp({
   data() {
     return {
       newMessage: "",
+      contactActiveIndex : 0,
       contacts: [
         {
           name: 'Michele',
@@ -108,7 +113,7 @@ createApp({
         },
         {
           name: 'Claudia',
-          avatar: './img/avatar_5.jpg',
+          avatar: './img/avatar_6.jpg',
           visible: false,
           messages: [
           {
@@ -168,10 +173,21 @@ createApp({
           ],
         },
         {
-          name: 'Davide',
+          name: 'Davide 2',
           avatar: './img/avatar_8.jpg',
           visible: false,
           messages: [
+    
+          {
+            date: '10/01/2020 15:50:00',
+            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+            status: 'sent'
+          },
+          {
+            date: '10/01/2020 15:51:00',
+            message: 'OK!!',
+            status: 'received'
+          },
           {
             date: '10/01/2020 15:30:55',
             message: 'Ciao, andiamo a mangiare la pizza stasera?',
@@ -186,7 +202,37 @@ createApp({
             date: '10/01/2020 15:51:00',
             message: 'OK!!',
             status: 'received'
-          }
+          },
+          {
+            date: '10/01/2020 15:30:55',
+            message: 'Ciao, andiamo a mangiare la pizza stasera?',
+            status: 'received'
+          },
+          {
+            date: '10/01/2020 15:50:00',
+            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+            status: 'sent'
+          },
+          {
+            date: '10/01/2020 15:51:00',
+            message: 'OK!!',
+            status: 'received'
+          },
+          {
+            date: '10/01/2020 15:30:55',
+            message: 'Ciao, andiamo a mangiare la pizza stasera?',
+            status: 'received'
+          },
+          {
+            date: '10/01/2020 15:50:00',
+            message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+            status: 'sent'
+          },
+          {
+            date: '10/01/2020 15:51:00',
+            message: 'OK!!',
+            status: 'received'
+          },
           ],
         }
       ]
@@ -194,10 +240,7 @@ createApp({
   },
   methods:{
     activeChat(index){
-      this.contacts.forEach(contact => {
-        contact.visible = false
-      });
-      this.contacts[index].visible = true;
+      this.contactActiveIndex = index
     },
     sendMessage(){
       let currentIDChat = "" 
@@ -205,7 +248,7 @@ createApp({
         if(contact.visible){
           currentIDChat = index
           contact.messages.push({
-            date: '10/01/2020 15:30:55',
+            date: '10/01/2020 15:30:55', // trattare la data 
             message: this.newMessage,
             status: 'sent'
           })
@@ -218,7 +261,7 @@ createApp({
     },
     replayMessage(currentIndex){
       this.contacts[currentIndex].messages.push({
-        date: '10/01/2020 15:30:55',
+        date: '10/01/2020 15:30:55', // trattare la data 
         message: 'risposta',
         status: 'received'
       })
