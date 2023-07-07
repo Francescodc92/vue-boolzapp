@@ -101,7 +101,7 @@
                         </div>
                       </div>
                       <!--end section header left -->
-                      <div class="contact-right">
+                      <div class="contact-right" v-if="getDate(index) != null">
                         {{getDate(index)}}
                       </div>
                       <!--end section header left -->
@@ -157,9 +157,22 @@
               <!--end header section right-->
             
                 <div class="main-right" >
-                  <p class="message" :class="[message.status]" v-for="message in contacts[contactActiveIndex].messages">
+                  <p 
+                    class="message" 
+                    :class="[message.status]"
+                    v-for="(message, index) in contacts[contactActiveIndex].messages"
+                  >
                     <span class="text-message">{{message.message}}</span> 
                     <span class="time">{{message.date}}</span>
+                    <span class="icon" @click="openModal(index)">
+                      <i class="fa-solid fa-chevron-right"></i>
+                    </span>
+                    <span class="delete-modal" v-if="message.modalVisible">
+                      <button @click="deleteMSG(index)">
+                        elimina
+                      </button>
+                    </span>
+
                   </p>
                 </div>
                 <!--end main right-->
@@ -184,8 +197,8 @@
             </div>
           </div>
           <!--container app-->
-        </div>
-        <!--container bg-->
+      </div>
+      <!--container bg-->
     </div>
     <!--vue container-->
 
