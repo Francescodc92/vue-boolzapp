@@ -256,9 +256,9 @@ createApp({
       // this.contacts[index].messages[this.contacts[index].messages.lenght - 1].date
       if(this.contacts[index].messages.length > 0){
         const currentContact = this.contacts[index]
-        const lastMessageId = currentContact.messages[currentContact.messages.length - 1 ].date 
+        const lastMessageDate = currentContact.messages[currentContact.messages.length - 1 ].date 
         
-        return lastMessageId
+        return lastMessageDate
       }
       return null
       
@@ -269,6 +269,14 @@ createApp({
     },
     deleteMSG(index){
       this.contacts[this.contactActiveIndex].messages.splice(index, 1)
+    },
+    getLastMessage(index){
+       if(this.contacts[index].messages.length > 0){
+         const currentContact = this.contacts[index]
+        const lastMessage = currentContact.messages[currentContact.messages.length - 1 ].message 
+        return lastMessage
+      }
+      return null
     }
   }
 }).mount('#app');

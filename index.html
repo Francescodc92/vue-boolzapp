@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Boolzapp</title>
     <!--vue js-->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!--font awesome -->
@@ -97,7 +97,9 @@
                         <!--end img wrapper -->
                         <div class="info">
                           <span class="name">{{contact.name}}</span>
-                          <p class="last-messagge">Ultimo messaggio inviato</p>
+                          <p class="last-messagge">
+                            {{getLastMessage(index)}}
+                          </p>
                         </div>
                       </div>
                       <!--end section header left -->

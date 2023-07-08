@@ -262,6 +262,11 @@ Main left
   color: #aaa;
 }
 
+#app .main-app-left .contact-right{
+  text-align: right;
+  max-width: 60px;
+}
+
 /*--------
 Section right
 ---------*/
@@ -344,6 +349,7 @@ Section right
   font-size: .625rem;
   color:#aaa;
   align-self: flex-end;
+  text-align: right;
 }
 
 /*-------------
