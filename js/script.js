@@ -257,7 +257,7 @@ createApp({
       if(this.contacts[index].messages.length > 0){
         const currentContact = this.contacts[index]
         const lastMessageDate = currentContact.messages[currentContact.messages.length - 1 ].date  
-        return  this.formatDate(lastMessageDate).hour
+        return  this.formatDate(lastMessageDate).day
       }
       return null
       
