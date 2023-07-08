@@ -165,7 +165,7 @@
                     v-for="(message, index) in contacts[contactActiveIndex].messages"
                   >
                     <span class="text-message">{{message.message}}</span> 
-                    <span class="time">{{message.date}}</span>
+                    <span class="time">{{formatDate(message.date).hour}}</span>
                     <span class="icon" @click="openModal(index)">
                       <i class="fa-solid fa-chevron-right"></i>
                     </span>

@@ -264,7 +264,6 @@ Main left
 
 #app .main-app-left .contact-right{
   text-align: right;
-  max-width: 60px;
 }
 
 /*--------
@@ -349,6 +348,7 @@ Section right
   font-size: .625rem;
   color:#aaa;
   align-self: flex-end;
+  margin-top: .625rem;
   text-align: right;
 }
 

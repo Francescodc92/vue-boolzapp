@@ -257,8 +257,7 @@ createApp({
       if(this.contacts[index].messages.length > 0){
         const currentContact = this.contacts[index]
         const lastMessageDate = currentContact.messages[currentContact.messages.length - 1 ].date 
-        
-        return lastMessageDate
+        return this.formatDate(lastMessageDate).hour
       }
       return null
       
@@ -277,6 +276,17 @@ createApp({
         return lastMessage
       }
       return null
-    }
+    },
+    formatDate(data){
+      const splittedDate = data.split(" ")
+      const splittedHour = splittedDate[1].split(':')
+      const formattedHour = splittedHour[0] + ":" + splittedHour[1] 
+      const formattedDate = {
+        hour : formattedHour,
+        day: splittedDate[0]
+      }
+
+      return formattedDate
+    },
   }
 }).mount('#app');
