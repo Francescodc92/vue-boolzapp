@@ -4,10 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Boolzapp</title>
-    <!--vue js-->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  
     <!--font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+     <!--vue js-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <!--css -->
     <link rel="stylesheet" href="./css/style.css" />
   </head>
@@ -103,8 +104,8 @@
                         </div>
                       </div>
                       <!--end section header left -->
-                      <div class="contact-right" v-if="getDate(index) != null">
-                        {{getDate(index)}}
+                      <div class="contact-right" v-if="getMessageDate(index) != null">
+                        {{getMessageDate(index)}} 
                       </div>
                       <!--end section header left -->
                     </li>
@@ -165,7 +166,9 @@
                     v-for="(message, index) in contacts[contactActiveIndex].messages"
                   >
                     <span class="text-message">{{message.message}}</span> 
-                    <span class="time">{{formatDate(message.date).hour}}</span>
+                    <span class="time">
+                      {{formatDate(message.date).hour}}
+                    </span>
                     <span class="icon" @click="openModal(index)">
                       <i class="fa-solid fa-chevron-right"></i>
                     </span>
@@ -206,6 +209,8 @@
 
     <!--axios js-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--luxon-->
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <!--my js-->
     <script src="./js/script.js"></script>
   </body>

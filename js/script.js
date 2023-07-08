@@ -3,6 +3,7 @@
 - aggiungere la condizione che mostra un elemento alternativo quando nessuno dei contatti è attivo
 */
 const { createApp } = Vue;
+const DateTime = luxon.DateTime;
 
 createApp({
   data() {
@@ -227,7 +228,7 @@ createApp({
     },
     sendMessage(){
       this.contacts[this.contactActiveIndex].messages.push({
-            date: '10/01/2020 15:30:55', // trattare la data 
+            date: DateTime.now().toLocaleString(DateTime.TIME_FULL) + " " + DateTime.now().toLocaleString(DateTime.TIME_WITH_SECONDS),
             message: this.newMessage,
             status: 'sent'
           })
@@ -238,7 +239,7 @@ createApp({
     },
     replayMessage(){
       this.contacts[this.contactActiveIndex].messages.push({
-        date: '10/01/2020 15:30:55', // trattare la data 
+        date: DateTime.now().toLocaleString(DateTime.TIME_FULL) + " " + DateTime.now().toLocaleString(DateTime.TIME_WITH_SECONDS),
         message: 'risposta',
         status: 'received'
       })
@@ -252,12 +253,11 @@ createApp({
         }
       });
     },
-    getDate(index){
-      // this.contacts[index].messages[this.contacts[index].messages.lenght - 1].date
+    getMessageDate(index){
       if(this.contacts[index].messages.length > 0){
         const currentContact = this.contacts[index]
-        const lastMessageDate = currentContact.messages[currentContact.messages.length - 1 ].date 
-        return this.formatDate(lastMessageDate).hour
+        const lastMessageDate = currentContact.messages[currentContact.messages.length - 1 ].date  
+        return  this.formatDate(lastMessageDate).hour
       }
       return null
       
@@ -277,14 +277,15 @@ createApp({
       }
       return null
     },
-    formatDate(data){
-      const splittedDate = data.split(" ")
+    formatDate(date){
+      const splittedDate = date.split(" ")
       const splittedHour = splittedDate[1].split(':')
       const formattedHour = splittedHour[0] + ":" + splittedHour[1] 
       const formattedDate = {
         hour : formattedHour,
         day: splittedDate[0]
       }
+      
 
       return formattedDate
     },
