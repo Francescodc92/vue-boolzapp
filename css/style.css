@@ -17,6 +17,16 @@ Reset
   --header-meddle-height:3.75rem;
 }
 
+#app.light{
+  --bg-color:rgba(215,219,215,1);
+  --bg-color-left:#EAEAEA;
+  --color-primary:#B1B1B1;
+  --color-primary-hover:#b9c1c9b1;
+  --button-color:#768694B1;
+  --bg-light:#fff;
+  --footer-bg:#F3EEEA;
+}
+
 /*-------------
 Generals
 -------------*/
@@ -28,13 +38,25 @@ ul {
 }
 #app{
   background-image:linear-gradient(180deg, rgba(0,150,136,1) 0%,
-                                     rgba(215,219,215,1) 30%) ;
+                                     var(--bg-color) 30%) ;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
+.new-message-notification{
+  font-size: 12px;
+  font-weight: bold;
+  color: #fff;
+  background-color: rgb(214, 112, 112);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
 
 .avatar-visibile{
   display: block;
@@ -53,7 +75,7 @@ App
 .container-app{
   height: 100%;
   display: flex;
-  background-color: #fff;
+  background-color: var(--bg-light);
 }
 
 /*-------------
@@ -63,7 +85,7 @@ App section left contacts list
 #app .section-left{
   height: 100%;
   width: 40%;
-  background-color: #EAEAEA;
+  background-color: var(--bg-color-left);
 }
 #app .section-right{
   width: 60%;
@@ -77,6 +99,7 @@ App section left contacts list
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-color: var(--bg-color-left);
 }
 
 #app .section-left .section-left-header,
@@ -106,19 +129,19 @@ App section left contacts list
   display: flex;
   gap: .3125rem;
   font-size: 1.3rem;
-  color: #B1B1B1;
+  color: var(--color-primary);
   transition: color 200ms ease-in-out;
 }
 
 #app .section-left .section-right-header .section-right-header-icons li a,
 #app .section-right .section-right-header .section-right-header-icons li a{
   padding: .625rem;
-  color: #B1B1B1;
+  color: var(--color-primary);
 }
 
 #app .section-left .section-right-header .section-right-header-icons li a:hover,
 #app .section-right .section-right-header .section-right-header-icons li a:hover{
-  color: #b9c1c9b1;
+  color: var(--color-primary-hover);
 }
 
 /*-------------
@@ -138,7 +161,7 @@ header middle
   font-size: .875rem;
   width: 2.1875rem;
   height: 2.1875rem;
-  background-color: #fff;
+  background-color: var(--bg-light);
   color: #8EDAFC;
   border-radius: 50%;
   display: flex;
@@ -153,12 +176,12 @@ header middle
 
 #app .section-left .header-meddle .text a{
   font-size: 13px;
-  color: #aaa;
+  color: var(--color-primary);
   transition: color 200ms ease-in-out;
 }
 
 #app .section-left .header-meddle .text a:hover{
-  color: #fff;
+  color: var(--bg-light);
 }
 
 /*-------------
@@ -185,17 +208,23 @@ header bottom
   justify-content: center;
   padding-inline: .9375rem;
   border: 1px solid #ddd;
-  background-color: #fff;
+  background-color: var(--bg-light);
   transition: background-color 200ms ease-in-out;
   cursor: pointer;
 }
 
 #app .section-left .header-bottom .seach-button:hover{
-  background-color: #ddd;
+  background-color: var(--color-primary);
 }
 
+
 #app .section-left .header-bottom .input-wrapper i{
-  color: #B1B1B1;
+  transition: color 200ms ease-in-out;
+  color: var(--color-primary);
+}
+
+#app .section-left .header-bottom .seach-button:hover i{
+  color: var(--bg-light);
 }
 
 #app .section-left .header-bottom input{
@@ -204,11 +233,11 @@ header bottom
   padding-inline: .3125rem;
   border: 1px solid #ddd;
   border-left: none;
-  outline-color: #B1B1B1;
+  outline-color: var(--color-primary);
 }
 
 #app .section-left .header-bottom input::placeholder{
-  color: #B1B1B1;
+  color: var(--color-primary);
 }
 
 /*-------------
@@ -223,7 +252,7 @@ Main left
 
 #app .main-app-left .contact{
   padding: .625rem .625rem;
-  background-color: #fff;
+  background-color: var(--bg-light);
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #ddd;
@@ -234,7 +263,7 @@ Main left
 
 #app .main-app-left .contact:hover,
 #app .main-app-left .contact.active{
-  background-color: #E9EBEB;
+  background-color: var(--bg-color-left);
 }
 
 #app .main-app-left .contact-left{
@@ -259,7 +288,12 @@ Main left
 #app .main-app-left .section-right-main,
 #app .main-app-left .contact-right{
   font-size: 13px;
-  color: #aaa;
+  color: var(--color-primary);
+}
+
+.writing{
+  color:rgb(36, 139, 36);
+  font-size: .875rem;
 }
 
 #app .main-app-left .contact-right{
@@ -270,12 +304,12 @@ Main left
 Section right
 ---------*/
 .header-app-right{
-  background-color: #EAEAEA;
-  border: 1px solid #ccc;
+  background-color: var(--bg-color-left);
+  border-left: 1px solid #ccc;
 }
 /*---------main section right-----------*/
 .main-right{
-  height: calc(100% - (var(--header-height ) + var(--footer-height)));
+  height: calc(100% - (var(--header-height ) + var(--footer-height)) + 2px);
   overflow-y: auto;
   display: flex;
   flex-direction: column;
@@ -293,18 +327,24 @@ Section right
   position:relative;
 }
 .delete-modal{
-  background-color: #fff;
+  height: 80px;
+  width: 80px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--bg-light);
   border: 1px solid #ccc;
   position: absolute;
   z-index: 100;
-  display: block;
-  bottom: -20px;
-  right: 0;
+  bottom: -70px;
+  right: -3%;
 }
 
 .icon {
   position: absolute;
   background-color: rgba(0, 0, 0, 0.3);
+  color:var(--bg-color-left);
   top: 5px;
   right:5px;
   opacity: 0;
@@ -319,14 +359,14 @@ Section right
 }
 
 .delete-modal button{
-  padding: .625rem 1.25rem;
+  padding: .3125rem .625rem;
   border: none;
   cursor: pointer;
 }
 
 .delete-modal button:hover{
   background-color: rgb(207, 68, 68);
-  color:#fff;
+  color:var(--bg-light);
 }
 .sent{
   align-self: flex-end;
@@ -335,7 +375,7 @@ Section right
 
 .received{
   align-self: flex-start;
-  background-color: #fff;
+  background-color: var(--bg-light);
 }
 
 .text-message{
@@ -346,7 +386,7 @@ Section right
 .time{
   max-width: 60px;
   font-size: .625rem;
-  color:#aaa;
+  color:var(--color-primary);
   align-self: flex-end;
   margin-top: .625rem;
   text-align: right;
@@ -357,7 +397,7 @@ Main footer
 --------------*/
 #app .main-footer{
   height: var(--footer-height);
-  background-color: #F3EEEA;
+  background-color: var(--footer-bg);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -368,25 +408,27 @@ Main footer
 #app .main-footer .input-wrapper{
   flex-grow: 1;
 }
+
 #app .main-footer input{
   width: 100%;
   padding: .625rem;
   border-radius: .3125rem;
   border: none;
-  outline-color: #B1B1B1;
+  outline-color: var(--color-primary);
 }
 
 #app .main-footer input::placeholder{
-  color: #B1B1B1;
+  color: var(--color-primary);
 }
 
 #app .main-footer .footer-button{
-  color: #768694B1;
+  background-color: var(--footer-bg);
+  color: var(--button-color);
   border: 0;
   font-size: 1.25rem;
   cursor: pointer;
 }
 
 #app .main-footer .footer-button:hover{
-  color: #9faab4b1;
+  color: var(--color-primary-hover);
 }

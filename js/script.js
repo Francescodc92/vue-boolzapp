@@ -11,11 +11,14 @@ createApp({
       newMessage: "",
       contactActiveIndex : 0,
       searchInput:'',
+      darkTheme: false,
       contacts: [
         {
           name: 'Michele',
           avatar: './img/avatar_1.jpg',
           visible: true,
+          contactWriting:"",
+          haveMessage:false,
           messages: [
             {
               date: '10/01/2020 15:30:55',
@@ -41,6 +44,8 @@ createApp({
           name: 'Fabio',
           avatar: './img/avatar_2.jpg',
           visible: true,
+          contactWriting:"",
+          haveMessage:false,
           messages: [
             {
               date: '20/03/2020 16:30:00',
@@ -66,6 +71,8 @@ createApp({
             name: 'Samuele',
             avatar: './img/avatar_3.jpg',
             visible: true,
+            contactWriting:"",
+            haveMessage:false,
             messages: [
             {
               date: '28/03/2020 10:10:40',
@@ -91,6 +98,8 @@ createApp({
           name: 'Alessandro B.',
           avatar: './img/avatar_4.jpg',
           visible: true,
+          contactWriting:"",
+          haveMessage:false,
           messages: [
             {
               date: '10/01/2020 15:30:55',
@@ -110,6 +119,8 @@ createApp({
           name: 'Alessandro L.',
           avatar: './img/avatar_5.jpg',
           visible: true,
+          contactWriting:"",
+          haveMessage:false,
           messages: [
             {
               date: '10/01/2020 15:30:55',
@@ -129,6 +140,8 @@ createApp({
           name: 'Claudia',
           avatar: './img/avatar_6.jpg',
           visible: true,
+          contactWriting:"",
+          haveMessage:false,
           messages: [
           {
             date: '10/01/2020 15:30:55',
@@ -154,6 +167,8 @@ createApp({
           name: 'Federico',
           avatar: './img/avatar_7.jpg',
           visible: true,
+          contactWriting:"",
+          haveMessage:false,
           messages: [
             {
               date: '10/01/2020 15:30:55',
@@ -173,6 +188,8 @@ createApp({
           name: 'Davide',
           avatar: './img/avatar_8.jpg',
           visible: true,
+          contactWriting:"",
+          haveMessage:false,
           messages: [
             {
               date: '10/01/2020 15:30:55',
@@ -198,6 +215,8 @@ createApp({
           name: 'Davide 2',
           avatar: './img/avatar_8.jpg',
           visible: true,
+          contactWriting:"",
+          haveMessage:false,
           messages: [
             {
               date: '10/01/2020 15:30:55',
@@ -216,7 +235,97 @@ createApp({
               message: 'OK!!',
               status: 'received',
               modalVisible :false,
-            }
+            },
+            {
+              date: '10/01/2020 15:30:55',
+              message: 'Ciao, andiamo a mangiare la pizza stasera?',
+              status: 'received',
+              modalVisible :false,
+            },
+            {
+              date: '10/01/2020 15:50:00',
+              message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+              status: 'sent',
+              modalVisible :false,
+            },
+            {
+              date: '10/01/2020 15:51:00',
+              message: 'OK!!',
+              status: 'received',
+              modalVisible :false,
+            },
+            {
+              date: '10/01/2020 15:30:55',
+              message: 'Ciao, andiamo a mangiare la pizza stasera?',
+              status: 'received',
+              modalVisible :false,
+            },
+            {
+              date: '10/01/2020 15:50:00',
+              message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+              status: 'sent',
+              modalVisible :false,
+            },
+            {
+              date: '10/01/2020 15:51:00',
+              message: 'OK!!',
+              status: 'received',
+              modalVisible :false,
+            },
+            {
+              date: '10/01/2020 15:30:55',
+              message: 'Ciao, andiamo a mangiare la pizza stasera?',
+              status: 'received',
+              modalVisible :false,
+            },
+            {
+              date: '10/01/2020 15:50:00',
+              message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+              status: 'sent',
+              modalVisible :false,
+            },
+            {
+              date: '10/01/2020 15:51:00',
+              message: 'OK!!',
+              status: 'received',
+              modalVisible :false,
+            },
+            {
+              date: '10/01/2020 15:30:55',
+              message: 'Ciao, andiamo a mangiare la pizza stasera?',
+              status: 'received',
+              modalVisible :false,
+            },
+            {
+              date: '10/01/2020 15:50:00',
+              message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+              status: 'sent',
+              modalVisible :false,
+            },
+            {
+              date: '10/01/2020 15:51:00',
+              message: 'OK!!',
+              status: 'received',
+              modalVisible :false,
+            },
+            {
+              date: '10/01/2020 15:30:55',
+              message: 'Ciao, andiamo a mangiare la pizza stasera?',
+              status: 'received',
+              modalVisible :false,
+            },
+            {
+              date: '10/01/2020 15:50:00',
+              message: 'No, l\'ho già mangiata ieri, ordiniamo sushi!',
+              status: 'sent',
+              modalVisible :false,
+            },
+            {
+              date: '10/01/2020 15:51:00',
+              message: 'OK!!',
+              status: 'received',
+              modalVisible :false,
+            },
           ],
         }
       ]
@@ -224,33 +333,45 @@ createApp({
   },
   methods:{
     activeChat(index){
-      this.contactActiveIndex = index
+      this.contactActiveIndex = index;
+      this.contacts[index].haveMessage = false;
     },
     sendMessage(){
-      this.contacts[this.contactActiveIndex].messages.push({
-            date: DateTime.now().toLocaleString(DateTime.TIME_FULL) + " " + DateTime.now().toLocaleString(DateTime.TIME_WITH_SECONDS),
-            message: this.newMessage,
-            status: 'sent'
-          })
-      this.newMessage = ""
-      setTimeout(() => {
-        this.replayMessage()
-      }, 1000);
+
+      if(this.newMessage.trim() != ''){
+        const currentIndex = this.contactActiveIndex
+        this.contacts[currentIndex].messages.push({
+              date: DateTime.now().toLocaleString(DateTime.TIME_FULL) + " " + DateTime.now().toLocaleString(DateTime.TIME_WITH_SECONDS),
+              message: this.newMessage,
+              status: 'sent'
+            });
+        this.newMessage = "";
+        this.contacts[this.contactActiveIndex].contactWriting = 'digitando...';
+        const randomTime = Math.floor(Math.random() * (5000 - 1000 + 1) ) + 1000
+        setTimeout(() => {
+          this.replayMessage(currentIndex)
+        }, randomTime);
+      };
+
     },
-    replayMessage(){
-      this.contacts[this.contactActiveIndex].messages.push({
+    replayMessage(currentIndex){
+      this.contacts[currentIndex].messages.push({
         date: DateTime.now().toLocaleString(DateTime.TIME_FULL) + " " + DateTime.now().toLocaleString(DateTime.TIME_WITH_SECONDS),
         message: 'risposta',
         status: 'received'
-      })
+      });
+      this.contacts[currentIndex].contactWriting = '';
+      if(currentIndex != this.contactActiveIndex){
+        this.contacts[currentIndex].haveMessage = true;
+      }
     },
     contactFilter(){
       this.contacts.forEach(element => {
         element.visible = true;
-        const elementNameLowerCaseel = element.name.toLowerCase()
+        const elementNameLowerCaseel = element.name.toLowerCase();
         if(!elementNameLowerCaseel.includes(this.searchInput)){
           element.visible = false;
-        }
+        };
       });
     },
     getMessageDate(index){
@@ -258,36 +379,42 @@ createApp({
         const currentContact = this.contacts[index]
         const lastMessageDate = currentContact.messages[currentContact.messages.length - 1 ].date  
         return  this.formatDate(lastMessageDate).day
-      }
-      return null
+      };
+      return null;
       
     },
     openModal(index){
-      this.contacts[this.contactActiveIndex].messages[index].modalVisible = !this.contacts[this.contactActiveIndex].messages[index].modalVisible
+      this.contacts.forEach(contact => {
+        contact.messages.forEach(message => {
+          message.modalVisible = false;
+        });
+      });
+
+      this.contacts[this.contactActiveIndex].messages[index].modalVisible = !this.contacts[this.contactActiveIndex].messages[index].modalVisible;
       
     },
     deleteMSG(index){
-      this.contacts[this.contactActiveIndex].messages.splice(index, 1)
+      this.contacts[this.contactActiveIndex].messages.splice(index, 1);
     },
     getLastMessage(index){
        if(this.contacts[index].messages.length > 0){
          const currentContact = this.contacts[index]
         const lastMessage = currentContact.messages[currentContact.messages.length - 1 ].message 
         return lastMessage
-      }
-      return null
+      };
+      return null;
     },
     formatDate(date){
-      const splittedDate = date.split(" ")
-      const splittedHour = splittedDate[1].split(':')
-      const formattedHour = splittedHour[0] + ":" + splittedHour[1] 
+      const splittedDate = date.split(" ");
+      const splittedHour = splittedDate[1].split(':');
+      const formattedHour = splittedHour[0] + ":" + splittedHour[1] ;
       const formattedDate = {
         hour : formattedHour,
         day: splittedDate[0]
-      }
+      };
       
 
-      return formattedDate
+      return formattedDate;
     },
   }
 }).mount('#app');
