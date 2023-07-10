@@ -369,10 +369,11 @@ createApp({
       return message
     },
     contactFilter(){
+      const searchInputLower = this.searchInput.toLowerCase()
       this.contacts.forEach(element => {
         element.visible = true;
-        const elementNameLowerCaseel = element.name.toLowerCase();
-        if(!elementNameLowerCaseel.includes(this.searchInput)){
+        const elementNameLower = element.name.toLowerCase();
+        if(!elementNameLower.includes(searchInputLower)){
           element.visible = false;
         };
       });
