@@ -3,222 +3,243 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Boolzapp</title>
-  
-    <!--font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-     <!--vue js-->
+    <title>Document</title>
+    <!--vue js-->
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!--font awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--css -->
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
 
 
-    <div id="app" class="light">
-      <div class="container">
-
-          <div class="container-app">
-            <div class="section-left">
-              <div class="header-app-left">
-                <div class="header-top">
-                  <div class="section-left-header">
-                    <div class="img-wrapper">
-                      <img src="./img/avatar_1.jpg" alt="" class="avatar-header">
-                    </div>
-                    <!--end img wrapper -->
-                    <span class="name">francesco</span>
-                  </div>
-                  <!--end section header left -->
-                  <div class="section-right-header">
-                    <ul class="section-right-header-icons">
-                      <li>
-                        <a href="">
-                          <i class="fa-solid fa-circle-notch"></i>
-                        </a>
-                      </li>
-                      <!--end icon item-->
-                      <li>
-                        <a href="">
-                          <i class="fa-solid fa-message"></i>
-                        </a>
-                      </li>
-                      <!--end icon item-->
-                      <li>
-                        <a href="">
-                          <i class="fa-solid fa-ellipsis-vertical"></i>
-                        </a>
-                      </li>
-                      <!--end icon item-->
-                    </ul>
-                  </div>
-                  <!--end section header left -->
+    <div id="app">
+      <div class="conatiner bg-gradient-to-b from-green-700 from-10% to-zinc-200 to-25% h-screen flex items-center justify-center">
+        <!--ricordare di eliminare il border del debug-->
+        <div 
+          class="app-container h-4/5 w-4/5 bg-slate-50 flex "
+        >
+          <section class="section-left w-2/5 h-full flex flex-col">
+            <div class="flex justify-between items-center p-2  bg-zinc-200 ">
+              <div class="user-info flex items-center gap-1">
+                <div class="img-wrapper w-14 rounded-full truncate">
+                  <img src="./img/avatar_1.jpg" alt="">
                 </div>
-                <!--end header top -->
-                <div class="header-meddle">
-                  <div class="notifications">
-                    <i class="fa-solid fa-bell-slash"></i>
-                  </div>
-                  <div class="text">
-                    <p>Ricevi notifiche di nuovi messaggi</p>
-                    <a href="#">Attiva notifiche desktop</a>
-                  </div>
-                  <!--end notifications -->
-                </div>
-                <!--end header meddle -->
-                <div class="header-bottom">
-                  <div class="input-wrapper">
-                    <button class="seach-button">
-                      <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                    <input 
-                    @keyup="contactFilter()"
-                    v-model="searchInput"
-                    type="text" 
-                    placeholder="Cerca o inizia una nuova chat"
-                    >
-                  </div>
-                  <!--end input wrapper -->
-                </div>
-                <!--end header bottom -->
+                <!--end img wrapper-->
+                <p class="text-sm">Francesco</p>
               </div>
-              <!--end header app section left -->
-              <div class="main-app-left">
-                <ul>
-                  <template v-for="(contact, index) in contacts">
-                    <li class="contact" 
-                      @click="activeChat(index)"
-                      :class="contactActiveIndex == index ? 'active' : ''"
-                      v-if="contact.visible"
-                    >
-                      <div class="contact-left">
-                        <div class="img-wrapper">
-                          <img :src="contact.avatar" alt="" class="avatar-header">
-                        </div>
-                        <!--end img wrapper -->
-                        <div class="info">
-                          <span class="name">{{contact.name}}</span>
-                          <p class="last-messagge" v-if="contact.contactWriting == ''">
-                            {{getLastMessage(index)}}
-                          </p>
-                          <p class="writing" v-else>
-                            {{contact.contactWriting}}
-                          </p>
-                        </div>
-                      </div>
-                      <!--end section header left -->
-                      <div class="contact-right" v-if="getMessageDate(index) != null && !contact.haveMessage">
-                        {{getMessageDate(index)}} 
-                      </div>
-                      <div class="new-message-notification" v-else-if="getMessageDate(index) != null && contact.haveMessage">
-                        1
-                      </div>
-                      <!--end section header left -->
-                    </li>
-                  </template>
-                  <!--endcontact element-->       
+              <!--end user info-->
+              <nav class="buttons-wrapper">
+                <ul class="flex gap-3 me-1 text-base">
+                  <li class="text-zinc-400 hover:text-zinc-300 transition-all">
+                    <a class="px-1" href="#"><i class="fa-solid fa-circle-notch"></i></a>
+                  </li>
+                  <li class="text-zinc-400 hover:text-zinc-300 transition-all">
+                    <a  class="px-1"href="#">
+                      <i class="fa-solid fa-message"></i>
+                    </a>
+                  </li>
+                  <li class="text-zinc-400 hover:text-zinc-300 transition-all">
+                    <a class="px-1" href="#">
+                      <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </a>
+                  </li>
                 </ul>
+              </nav>
+            </div>
+            <!--end header top section left-->
+            <div class="header-meddle bg-blue-300 flex items-center px-2   py-3 gap-1">
+              <div 
+                class="notification-icon bg-slate-50 w-14 h-14 flex items-center justify-center rounded-full text-blue-300
+                cursor-pointer
+                "
+              >
+                <i class="fa-solid fa-bell-slash"></i>
+              </div>
+              <!--end notifications icon-->
+              <div class="notification-text capitalize">
+                <p class="text-sm">ricevi notifiche di nuovi messaggi</p>
+                <a 
+                 class="text-xs underline decoration-1 text-zinc-500 hover:text-zinc-400 transition-all"
+                 href="#"
+                >
+                  attiva notifiche desktop
+                </a>
               </div>
             </div>
-            <!--end section left -->
-            <div class="section-right">
-              <div class="header-app-right">
-                <div class="header-top">
-                      <div class="message-person section-left-header ">
-                        <div class="img-wrapper" >
-                          <img :src="contacts[contactActiveIndex].avatar" :alt="contacts[contactActiveIndex].name" class="avatar-header">
-                        </div>
-                        <!--end img wrapper -->
-                        <div class="text-container">    
-                          <span class="name">{{contacts[contactActiveIndex].name}}</span>
-                          <p class="last-messagge" v-if="contacts[contactActiveIndex].contactWriting == ''">
-                            Ultimo accesso oggi alle 
-                            <span>{{getLastDate()}}</span>
-                          </p>
-                          <p class="writing" v-else>
-                            {{contacts[contactActiveIndex].contactWriting}}
-                          </p>
-                        </div>
-                      </div>
-                    <!--end section header left -->
-                    <div class="section-right-header">
-                      <ul class="section-right-header-icons">
-                        <li>
-                          <a href="">
-                          <i class="fa-solid fa-magnifying-glass"></i>
-                          </a>
-                        </li>
-                        <!--end icon item-->
-                        <li>
-                          <a href="">
-                            <i class="fa-solid fa-paperclip"></i>
-                          </a>
-                        </li>
-                        <!--end icon item-->
-                        <li>
-                          <a href="">
-                            <i class="fa-solid fa-ellipsis-vertical"></i>
-                          </a>
-                        </li>
-                        <!--end icon item-->
-                      </ul>
-                    </div>
-                    <!--end section header left -->
-                </div>
-                <!--end header top -->
-              </div>
-              <!--end header section right-->
-            
-                <div class="main-right" >
-                  <p 
-                    class="message" 
-                    :class="message.status"
-                    v-for="(message, index) in contacts[contactActiveIndex].messages"
-                  >
-                    <span class="text-message">{{message.message}}</span> 
-                    <span class="time">
-                      {{formatDate(message.date).hour}}
-                    </span>
-                    <span class="icon" @click="openModal(index)">
-                      <i class="fa-solid fa-chevron-right"></i>
-                    </span>
-                    <span class="delete-modal" v-if="message.modalVisible">
-                      <button @click="deleteMSG(index)">
-                        elimina
-                      </button>
-                    </span>
+            <!--end header middle section left-->
+            <div class="header-bottom h-10 p-1 flex border-b border-zinc-200">
+              <button 
+                class="border border-zinc-400 px-4 text-zinc-400 hover:bg-zinc-300 transition-all"
+              >
+                <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+              <input 
+                type="text" 
+                class="border border-zinc-400 border-s-0 flex-1 focus:outline-zinc-400 px-2"
+                
+                @keyup="contactFilter()"
+                v-model="searchInput"
+                type="text" 
+                placeholder="Cerca o inizia una nuova chat"
+              >
 
+            </div>
+            <!--end header bottom section left-->
+            <div class="main-left grow overflow-y-auto">
+              <ul >
+                <template v-for="(contact, index) in contacts">
+                  <li 
+                    class="
+                    flex justify-between py-3 px-2 w-full hover:bg-zinc-300 cursor-pointer border-b border-zinc-300 transition-all
+                    "
+                    @click="activeChat(index)"
+                    :class="contactActiveIndex == index ? 'active' : ''"
+                    v-if="contact.visible"
+                  
+                  >
+                    <div class="user-info flex items-center gap-1">
+                      <div class="img-wrapper w-14 rounded-full truncate">
+                        <img :src="contact.avatar" :alt="contact.name">
+                      </div>
+                      <!--end img wrapper-->
+                      <div class="info leading-3">
+                        <p class="text-sm">{{contact.name}}</p>
+                        <p 
+                          class="text-zinc-400 text-sm leading-4 w-32" 
+                          v-if="contact.contactWriting == ''"
+                        >
+                            {{getLastMessage(index)}}
+                        </p>
+                        <p class="writing text-green-500 capitalize text-sm" v-else>
+                            {{contact.contactWriting}}
+                        </p>
+                      </div>
+                    </div>
+                    <div 
+                      class="last-message-date self-start text-xs text-zinc-400"
+                      v-if="getMessageDate(index) != null && !contact.haveMessage"
+                    >
+                       {{getMessageDate(index)}} 
+                    </div>
+                    <div 
+                      class="new-message-notification text-xs w-5 h-5 bg-red-500 text-white flex items-center justify-center rounded-full"
+                      v-else-if="getMessageDate(index) != null && contact.haveMessage"
+                    >
+                      1
+                    </div>
+                    <!--end contact info-->
+                  </li>
+                </template>
+                <!--contact -->
+              </ul>
+            </div>
+            
+          </section>
+          <!--end app section left-->
+          <section class="right border grow flex flex-col">
+           <div class="flex justify-between items-center px-2  bg-zinc-200 h-16 border-s border-zinc-300 ">
+              <div class="user-info flex items-center gap-1">
+                <div class="img-wrapper w-14 rounded-full truncate">
+                  <img 
+                    :src="contacts[contactActiveIndex].avatar" 
+                    :alt="contacts[contactActiveIndex].name"
+                  >
+                </div>
+                <!--end img wrapper-->
+                <div class="text-wrapper">
+                  <p class="text-sm">
+                    {{contacts[contactActiveIndex].name}}
+                  </p>
+                  
+                  <p class="last-messagge text-sm text-zinc-400" v-if="contacts[contactActiveIndex].contactWriting == ''">
+                    Ultimo accesso oggi alle 
+                    <span>{{getLastDate()}}</span>
+                  </p>
+                  <p class="writing text-green-500 capitalize text-sm" v-else>
+                    {{contacts[contactActiveIndex].contactWriting}}
                   </p>
                 </div>
-                <!--end main right-->
-              <!--end message chat-->
-              <div class="main-footer">
-                <button class="footer-button">
-                  <i class="fa-regular fa-face-smile"></i>
-                </button>
-                <div class="input-wrapper">
-                  <input 
-                    type="text"
-                    placeholder="Scrivi un messaggio"
-                    v-model="newMessage"
-                    @keyup.enter="sendMessage()"
-                  >
-                </div>
-                <button class="footer-button">
-                  <i class="fa-solid fa-microphone"></i>
-                </button>
               </div>
-              <!--end main footer-->
-            </div>
+              <!--end user info-->
+              <nav class="buttons-wrapper">
+                <ul class="flex gap-3 me-1 text-base">
+                  <li class="text-zinc-400 hover:text-zinc-300 transition-all">
+                    <a class="px-1" href="#">
+                      <i class="fa-solid fa-magnifying-glass"></i>
+                    </a>
+                  </li>
+                  <li class="text-zinc-400 hover:text-zinc-300 transition-all">
+                    <a  class="px-1"href="#">
+                      <i class="fa-solid fa-paperclip"></i>
+                    </a>
+                  </li>
+                  <li class="text-zinc-400 hover:text-zinc-300 transition-all">
+                    <a class="px-1" href="#">
+                      <i class="fa-solid fa-ellipsis-vertical"></i>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
           </div>
-          <!--container app-->
+          <!--end header section right-->
+          <div class="main-right grow overflow-y-auto p-2 flex flex-col" >
+            <div 
+              class="message max-w-sm mt-2 px-2 rounded-md flex"
+              :class="message.status"
+              v-for="(message, index) in contacts[contactActiveIndex].messages"
+            >
+              <p class="py-3 text-sm"> 
+                {{message.message}}
+              </p>
+              <span class="text-xs text-zinc-400 ps-2 self-end">
+                {{formatDate(message.date).hour}}
+              </span>
+              <span class="icon-modal" @click="openModal(index)">
+                <i class="fa-solid fa-chevron-right"></i>
+              </span>
+              <span class="delete-modal" v-if="message.modalVisible">
+                <button @click="deleteMSG(index)">
+                  elimina
+                </button>
+              </span>
+            </div>
+          
+          </div>
+          <!--end main right chat-->
+          <div class="main-footer flex items-center">
+             <button class="footer-button text-zinc-400 hover:text-zinc-300 py-3 px-3 transition-all">
+                <i class="fa-regular fa-face-smile"></i>
+              </button>
+              <div class="input-wrapper grow">
+                <input 
+                  class=" w-full border border-zinc-300 px-2 outline-zinc-400"
+                  type="text"
+                  placeholder="Scrivi un messaggio"
+                  v-model="newMessage"
+                  @keyup.enter="sendMessage()"
+                >
+              </div>
+              <button 
+                class="footer-button text-zinc-400 hover:text-zinc-300 py-3 px-3 transition-all"
+                @click="sendMessage()"
+              >
+                <i class="fa-solid fa-location-arrow rotate-45"></i>
+              </button>
+          </div>
+          <!--end main right chat-->
+          </section>
+        </div>
+        <!--end app container-->
       </div>
-      <!--container bg-->
+      <!--bg container-->
     </div>
     <!--vue container-->
 
-    <!--axios js-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!--tailwind css-->
+    <script src="https://cdn.tailwindcss.com"></script>
     <!--luxon-->
     <script src="https://cdn.jsdelivr.net/npm/luxon@3.3.0/build/global/luxon.min.js"></script>
     <!--my js-->

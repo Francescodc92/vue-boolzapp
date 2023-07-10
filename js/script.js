@@ -1,13 +1,10 @@
-/*
-- aggiungere la condizione che mostra un elemento alternativo quando nessuno dei contatti è attivo
-*/
 const { createApp } = Vue;
 const DateTime = luxon.DateTime;
 
 createApp({
   data() {
     return {
-      newMessage: "",
+      newMessage: '',
       contactActiveIndex : 0,
       searchInput:'',
       darkTheme: false,
@@ -23,7 +20,7 @@ createApp({
               date: '10/01/2020 15:30:55',
               message: 'Hai portato a spasso il cane?',
               status: 'sent',
-              modalVisible: false
+              modalVisible:false,
             },
             {
               date: '10/01/2020 15:50:00',
@@ -338,12 +335,12 @@ createApp({
     sendMessage(){
       if(this.newMessage.trim() != ''){
         const currentIndex = this.contactActiveIndex;
-        const status = "sent";
+        const status = 'sent';
         const text = this.newMessage  
         this.contacts[currentIndex].messages.push(
           this.createMessage(text, status )
         );
-        this.newMessage = "";
+        this.newMessage = '';
         this.contacts[this.contactActiveIndex].contactWriting = 'digitando...';
         this.replayMessage(currentIndex)
       };
@@ -351,8 +348,8 @@ createApp({
     },
     replayMessage(currentIndex){
        const randomTime = Math.floor(Math.random() * (4000 - 1000 + 1) ) + 1000;
-       const status = "received"
-       const responseText = "risposta"
+       const status = 'received'
+       const responseText = 'risposta'
        setTimeout(() => {
          this.contacts[currentIndex].messages.push(
            this.createMessage(responseText, status )
@@ -365,7 +362,7 @@ createApp({
     },
     createMessage(textMessage, status){
       const message = {
-        date: DateTime.now().toLocaleString(DateTime.TIME_FULL) + " " + DateTime.now().toLocaleString(DateTime.TIME_WITH_SECONDS),
+        date: DateTime.now().toLocaleString(DateTime.TIME_FULL) + ' ' + DateTime.now().toLocaleString(DateTime.TIME_WITH_SECONDS),
         message: textMessage,
         status: status
       }
@@ -390,14 +387,13 @@ createApp({
       
     },
     openModal(index){
-      this.contacts.forEach(contact => {
-        contact.messages.forEach(message => {
-          message.modalVisible = false;
+        this.contacts[this.contactActiveIndex].messages.forEach((message, i) => {
+          if(i == index){
+            message.modalVisible = !message.modalVisible;
+          }else{
+            message.modalVisible = false;
+          }
         });
-      });
-
-      this.contacts[this.contactActiveIndex].messages[index].modalVisible = !this.contacts[this.contactActiveIndex].messages[index].modalVisible;
-      
     },
     deleteMSG(index){
       this.contacts[this.contactActiveIndex].messages.splice(index, 1);
@@ -420,9 +416,9 @@ createApp({
       return null;
     },
     formatDate(date){
-      const splittedDate = date.split(" ");
+      const splittedDate = date.split(' ');
       const splittedHour = splittedDate[1].split(':');
-      const formattedHour = splittedHour[0] + ":" + splittedHour[1] ;
+      const formattedHour = splittedHour[0] + ':' + splittedHour[1] ;
       const formattedDate = {
         hour : formattedHour,
         day: splittedDate[0]

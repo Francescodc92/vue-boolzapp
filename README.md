@@ -202,7 +202,7 @@ contacts: [
 - HTML
 - CSS
 - JAVASCRIPT
-- BOOTSTRAP
+- TAILWIND CSS
 - VUE JS
 - AXIOS
 - Git e Github
