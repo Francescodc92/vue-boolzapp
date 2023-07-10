@@ -1,5 +1,4 @@
 /*
-- aggiungere la funzione per trattare la data 
 - aggiungere la condizione che mostra un elemento alternativo quando nessuno dei contatti è attivo
 */
 const { createApp } = Vue;
@@ -337,33 +336,40 @@ createApp({
       this.contacts[index].haveMessage = false;
     },
     sendMessage(){
-
       if(this.newMessage.trim() != ''){
-        const currentIndex = this.contactActiveIndex
-        this.contacts[currentIndex].messages.push({
-              date: DateTime.now().toLocaleString(DateTime.TIME_FULL) + " " + DateTime.now().toLocaleString(DateTime.TIME_WITH_SECONDS),
-              message: this.newMessage,
-              status: 'sent'
-            });
+        const currentIndex = this.contactActiveIndex;
+        const status = "sent";
+        const text = this.newMessage  
+        this.contacts[currentIndex].messages.push(
+          this.createMessage(text, status )
+        );
         this.newMessage = "";
         this.contacts[this.contactActiveIndex].contactWriting = 'digitando...';
-        const randomTime = Math.floor(Math.random() * (5000 - 1000 + 1) ) + 1000
-        setTimeout(() => {
-          this.replayMessage(currentIndex)
-        }, randomTime);
+        this.replayMessage(currentIndex)
       };
 
     },
     replayMessage(currentIndex){
-      this.contacts[currentIndex].messages.push({
+       const randomTime = Math.floor(Math.random() * (4000 - 1000 + 1) ) + 1000;
+       const status = "received"
+       const responseText = "risposta"
+       setTimeout(() => {
+         this.contacts[currentIndex].messages.push(
+           this.createMessage(responseText, status )
+         );
+         this.contacts[currentIndex].contactWriting = '';
+         if(currentIndex != this.contactActiveIndex){
+           this.contacts[currentIndex].haveMessage = true;
+         }
+       }, randomTime);
+    },
+    createMessage(textMessage, status){
+      const message = {
         date: DateTime.now().toLocaleString(DateTime.TIME_FULL) + " " + DateTime.now().toLocaleString(DateTime.TIME_WITH_SECONDS),
-        message: 'risposta',
-        status: 'received'
-      });
-      this.contacts[currentIndex].contactWriting = '';
-      if(currentIndex != this.contactActiveIndex){
-        this.contacts[currentIndex].haveMessage = true;
+        message: textMessage,
+        status: status
       }
+      return message
     },
     contactFilter(){
       this.contacts.forEach(element => {
@@ -397,10 +403,19 @@ createApp({
       this.contacts[this.contactActiveIndex].messages.splice(index, 1);
     },
     getLastMessage(index){
-       if(this.contacts[index].messages.length > 0){
-         const currentContact = this.contacts[index]
+      if(this.contacts[index].messages.length > 0){
+        const currentContact = this.contacts[index]
         const lastMessage = currentContact.messages[currentContact.messages.length - 1 ].message 
         return lastMessage
+      };
+      return null;
+    },
+    getLastDate(){
+      if(this.contacts[this.contactActiveIndex].messages.length > 0){
+        const currentContact = this.contacts[this.contactActiveIndex]
+        const lastMessageFullDate = currentContact.messages[currentContact.messages.length - 1 ].date 
+        const lastMessageFormattedDate = this.formatDate(lastMessageFullDate)
+        return lastMessageFormattedDate.hour
       };
       return null;
     },

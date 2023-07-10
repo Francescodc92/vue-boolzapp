@@ -132,7 +132,8 @@
                         <div class="text-container">    
                           <span class="name">{{contacts[contactActiveIndex].name}}</span>
                           <p class="last-messagge" v-if="contacts[contactActiveIndex].contactWriting == ''">
-                            Ultimo accesso oggi alle 12:00
+                            Ultimo accesso oggi alle 
+                            <span>{{getLastDate()}}</span>
                           </p>
                           <p class="writing" v-else>
                             {{contacts[contactActiveIndex].contactWriting}}
@@ -171,7 +172,7 @@
                 <div class="main-right" >
                   <p 
                     class="message" 
-                    :class="[message.status]"
+                    :class="message.status"
                     v-for="(message, index) in contacts[contactActiveIndex].messages"
                   >
                     <span class="text-message">{{message.message}}</span> 
